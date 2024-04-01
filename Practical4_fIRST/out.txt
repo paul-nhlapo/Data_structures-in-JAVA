@@ -1,0 +1,109 @@
+[0]
+├── [5]
+│   ├── [10]
+│   ├── [7]
+│   └── [6]
+├── [2]
+│   ├── [9]
+│   ├── [4]
+│   └── [3]
+└── [1]
+    └── [8]
+
+[0]
+├── [1]
+│   ├── [4]
+│   │   ├── [9]
+│   │   └── [5]
+│   └── [3]
+│       ├── [10]
+│       └── [8]
+└── [2]
+    ├── [7]
+    └── [6]
+
+[5][4][1][0]
+[6]
+├── [8]
+│   ├── [9]
+│   └── [10]
+└── [7]
+
+
+
+        this.d = newD;
+        int i = nodes.length - 1;
+        while (i >= 0) {
+            int min = i;
+            for (int j = 1; j <= d; j++) {
+                if (d * i + j < nodes.length && nodes[d * i + j].compareTo(nodes[min]) < 0) {
+                    min = d * i + j;
+                }
+            }
+            if (min != i) {
+                T temp2 = nodes[i];
+                nodes[i] = nodes[min];
+                nodes[min] = temp2;
+                i = min;
+            } else {
+                i--;
+            }
+        }
+
+         public void changeD(int newD) {
+        if (newD < 2) {
+            return;
+        }
+        this.d = newD;
+
+        // Reorganize the heap to ensure it remains a valid d-ary min heap
+        for (int i = (nodes.length - 2) / d; i >= 0; i--) {
+            heapifyDown(i);
+        }
+    }
+
+    private void heapifyDown(int i) {
+        int minChildIndex = getMinChildIndex(i);
+        if (minChildIndex != -1 && nodes[minChildIndex].compareTo(nodes[i]) < 0) {
+            swap(i, minChildIndex);
+            heapifyDown(minChildIndex);
+        }
+    }
+
+    private int getMinChildIndex(int i) {
+        int minChildIndex = -1;
+        T minChild = null;
+        for (int j = 1; j <= d; j++) {
+            int childIndex = d * i + j;
+            if (childIndex < nodes.length) {
+                T child = nodes[childIndex];
+                if (minChild == null || child.compareTo(minChild) < 0) {
+                    minChildIndex = childIndex;
+                    minChild = child;
+                }
+            }
+        }
+        return minChildIndex;
+    }
+
+    private void swap(int i, int j) {
+        T temp = nodes[i];
+        nodes[i] = nodes[j];
+        nodes[j] = temp;
+    }
+
+    //The reversePathToRoot
+    // Reverse the order of the path string
+// String reversedPath = "";
+// for (int j = path.length() - 1; j >= 0; j--) {
+// if (path.charAt(j) == ']') {
+// int start = j - 1;
+// while (start >= 0 && path.charAt(start) != '[') {
+// start--;
+// }
+// reversedPath = reversedPath + path.substring(start, j + 1);
+// j = start;
+// }
+// }
+
+// return reversedPath;

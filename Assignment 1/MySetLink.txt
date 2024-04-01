@@ -1,0 +1,145 @@
+ public void setLinks() {
+        rows = new Cell[numRows * numCols];
+        cols = new Cell[numRows * numCols];
+        blocks = new Cell[numRows * numCols];
+
+        for (int i = 0; i < numRows * numCols; i++) {
+            for (int j = 0; j < numRows * numCols; j++) {
+                if (j == 0) {
+                    rows[i] = cells[i * numRows * numCols + j];
+                }
+            }
+        }
+        for (int i = 0; i < numRows * numCols; i++) {
+            Cell ptr = rows[i];
+            for (int j = 0; j < numRows * numCols; j++) {
+                if (j < numRows * numCols) {
+                    ptr.right = cells[i * numRows * numCols + j];
+                } else {
+                    ptr.right = null;
+                }
+                ptr = ptr.right;
+            }
+        }
+
+        for (int i = 0; i < numRows * numCols; i++) {
+            for (int j = 0; j < numRows * numCols; j++) {
+                if (j == 0) {
+                    cols[i] = cells[j * numRows * numCols + i];
+                }
+            }
+        }
+        for (int i = 0; i < numRows * numCols; i++) {
+            Cell ptr = cols[i];
+            for (int j = 0; j < numRows * numCols; j++) {
+                if (j < numRows * numCols) {
+                    ptr.below = cells[j * numRows * numCols + i];
+                } else {
+                    ptr.below = null;
+                }
+                ptr = ptr.below;
+            }
+        }
+
+        // Cell ptr = null;
+        // String blockss = "";
+        // System.out.println("Blocks Algorithm");
+        // for (int i = 0; i < numRows * numCols; i += numRows) {
+        // for (int j = 0; j < numRows * numCols; j += numCols) {
+        // for (int r = i; r < i + numRows; r++) {
+        // for (int c = j; c < j + numCols; c++) {
+        // int cell = r * numRows * numCols + c;
+        // blockss += cell + " ";
+        // }
+        // }
+        // blockss += "\n";
+        // }
+        // }
+
+        // String blockss = "";
+        // System.out.println("Blocks Algorithm");
+        // // int cell1 = 0;
+        // for (int i = 0; i < numRows * numCols; i += numRows) {
+        // for (int j = 0; j < numRows * numCols; j += numCols) {
+        // for (int r = i; r < i + numRows; r++) {
+        // for (int c = j; c < j + numCols; c++) {
+        // int cell = r * numRows * numCols + c;
+        // blockss += cell + " ";
+        // // link the blocks array like how the blockss string output using the pointer
+        // // .block
+        // // cells[cell1].block = cells[cell];
+        // // cell1 = cell;
+        // }
+        // }
+        // blockss += "\n";
+        // }
+        // }
+
+        // for (int i = 0; i < numRows * numCols; i++) {
+        // for (int j = 0; j < numRows * numCols; j++) {
+        // if (j == 0) {
+        // blocks[i] = cells[j * numRows * numCols + i];
+        // }
+        // }
+        // }
+
+        // System.out.println("Blocks:\n" + blockss);
+        // String blockx = "";
+        // System.out.println("Blocks Algorithm");
+        // int t = 0;
+        // for (Integer p = 0; p < (numRows * numCols) * (numRows * numCols); p +=
+        // numCols) {
+        // blockx += (p) + " ";
+        // t += 1;
+        // if (t == numRows) {
+        // p += numRows * (numRows - 1) * numCols;
+        // t = 0;
+        // }
+        // }
+
+        // System.out.println("Blocks: " + blockx);
+
+        /////////// For checking only/////////////
+        Cell ptr = null;
+        int counter = 0;
+        int sizeArray = this.numRows * this.numCols;
+        int count = this.numCols, firstIndex = 0;
+
+        // One dimensional array that get the index of each of head.
+        int[] posBlocks = new int[this.blocks.length];
+        for (int x = 0, y = 0; x < sizeArray * sizeArray; x += numCols, y++) {
+            posBlocks[y] += (x);
+            counter += 1;
+            if (counter == numRows) {
+                x += sizeArray * (numRows - 1);
+                counter = 0;
+            } else if (counter == this.numRows)
+                continue;
+        }
+
+        for (int i = 0; i < (blocks.length); i++) {
+            this.blocks[i] = cells[posBlocks[i]];
+            ptr = this.blocks[i];
+            if (i % 2 != 0) {
+                for (int x = 0; x < numRows; x++) {
+                    for (int y = 0; y < numCols; y++, count++) {
+                        ptr.block = cells[count];
+                        ptr = ptr.block;
+                    }
+                    count += ((this.numRows - 1) * this.numRows) + 1;
+                }
+            }
+
+            else if (i % 2 == 0) {
+                for (int x = 0; x < numRows; x++) {
+                    for (int y = 0; y < numCols; y++, firstIndex++) {
+                        ptr.block = cells[firstIndex];
+                        ptr = ptr.block;
+                    }
+                    firstIndex += ((this.numRows - 1) * this.numRows) + 1;
+                }
+            } else
+                continue;
+        }
+
+    }

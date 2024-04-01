@@ -1,0 +1,3 @@
+[my,bad,data!;;Hello,name,generating;;I,fake;;is,Sean,Macmillan,;;and,am,at;]
+[I,fake;my,is;Hello,at;Sean;bad;Macmillan,,am;generating;;name;and,data!]
+[;name,is,and;;at;Sean,data!;Hello,am;generating,fake;;bad;my,Macmillan,,I]
