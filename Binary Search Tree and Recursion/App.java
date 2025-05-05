@@ -8,6 +8,38 @@ public class App {
         // test5();
     }
 
+    // SUMMARY
+    // 1. Create a binary tree with the following values: 2, 1, 3
+    // 2. Print the height of the tree
+    // 3. Print the number of leaves in the tree
+    // 4. Perform a depth-first traversal of the tree
+    // 5. Find the parent of the node with value 3
+    // 6. Find the node with value 1
+    // 7. Check if the tree contains the value 5
+    // 8. Convert the tree to a mirrored version and repeat steps 2-7
+    // 9. Create a standard binary tree with the following values: 5, 3, 7, 2, 4, 6,
+    // 8
+    // 10. Print the height of the tree
+    // 11. Print the number of leaves in the tree
+    // 12. Perform a depth-first traversal of the tree
+    // 13. Find the parent of the node with value 3
+    // 14. Find the parent of the node with value 4
+    // 15. Find the parent of the node with value 8
+    // 16. Find the node with value 5
+    // 17. Find the node with value 2
+    // 18. Find the node with value 7
+    // 19. Check if the tree contains the value 5
+    // 20. Check if the tree contains the value 9
+    // 21. Check if the tree contains the value 6
+    // 22. Check if the tree contains the value 4
+    // 23. Check if the tree contains the value 2
+    // 24. Check if the tree contains the value 3
+    // 25. Check if the tree contains the value 7
+    // 26. Check if the tree contains the value 1
+    // 27. Check if the tree is perfectly balanced
+    // 28. Convert the tree to a mirrored version and repeat steps 10-27
+    // 29. Create a standard binary tree with the following values: 5, 3, 7, 2, 4,
+    // 6, 8
     public static void test0() {
         System.out.println("-------------- TEST 0 - NORMAL STUFF -------------");
         BinaryTree<Integer> t = new StandardBinaryTree<>();
